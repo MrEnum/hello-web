@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+<!--@Service 나 @Repository 등 컴포넌트 어노테이션이 붙어있는 클래스를 자동으로 빈등록시켜라-->
+    <context:component-scan base-package="kr.co.acomp.hello"/>
+
+
+    <!--빈등록 -->
+    <bean id="helloService" class="kr.co.acomp.hello.service.HelloService">
+        <!--set의 name-->
+        <!--세터 주입-->
+        <property name="helloDAO" ref="helloDAO"/>
+        <property name="anotherDAO" ref="anotherDAO"/>
+        <!--생성자 주입-->
+        <!--		<constructor-arg ref="helloDAO"/>-->
+    </bean>
+
+    <bean id="helloDAO" class="kr.co.acomp.hello.dao.HelloDAO"/>
+    <bean id="anotherDAO" class="kr.co.acomp.hello.dao.AnotherDAO"/>
+
+
+<!--    <bean id="bbsService" class="kr.co.acomp.hello.service.BbsService">-->
+<!--        <property name="articleDAO" ref="articleDAO"/>-->
+<!--    </bean>-->
+<!--    <bean id="articleDAO" class="kr.co.acomp.hello.dao.ArticleDAO"/>-->
+
+
+</beans>
