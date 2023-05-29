@@ -7,8 +7,17 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
         http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="kr.co.acomp.hello"/>
+    <context:component-scan base-package="kr.co.acomp.hello"
+                            use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
     <mvc:annotation-driven/>
+
+    <mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"/>
+    <bean id="mutipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="104857699"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
 
     <!--viewResolver 설정-->
     <bean id="viewResolver"
@@ -16,4 +25,5 @@
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
 </beans> 

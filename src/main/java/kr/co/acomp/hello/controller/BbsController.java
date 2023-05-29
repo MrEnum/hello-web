@@ -14,9 +14,14 @@ public class BbsController {
     @Autowired
     private BbsService bbsService;
 
+    @GetMapping("")
+    public String index() {
+        return "index";
+    }
+
     @GetMapping("/{articleId}")
     @ResponseBody//객체를 그대로 리턴
-    public Article viewDetail(@PathVariable String articleId){
+    public Article viewDetail(@PathVariable String articleId) {
         Article article = this.bbsService.viewArticleDetail(articleId);
         return article;
     }
@@ -27,7 +32,7 @@ public class BbsController {
 //    	return "write_ok";
 //    }
 
-    @PostMapping(value="/write")
+    @PostMapping(value = "/write")
     @ResponseBody
     public Article write(@RequestBody Article article) {
         Article a = article;
@@ -41,7 +46,7 @@ public class BbsController {
 //        ModelAndView model = new ModelAndView("write_ok").addObject("article", article);
 //        return model;
 //    }
-    
+
     @GetMapping("/write")
     public String write() {
         bbsService.registArticle(new Article());
