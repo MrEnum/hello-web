@@ -26,4 +26,12 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/bbs/**/"/>
+            <bean id="measuringInterceptor" class="kr.co.acomp.hello.interceptor.MeasuringInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
 </beans> 

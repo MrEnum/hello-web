@@ -16,6 +16,7 @@ public class BbsController {
 
     @GetMapping("")
     public String index() {
+        bbsService.testService();
         return "index";
     }
 
@@ -35,8 +36,8 @@ public class BbsController {
     @PostMapping(value = "/write")
     @ResponseBody
     public Article write(@RequestBody Article article) {
-        Article a = article;
-        return a;
+        bbsService.registArticle(article);
+        return article;
     }
 
 //    @PostMapping(value="/write")

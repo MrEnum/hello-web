@@ -20,19 +20,16 @@ public class ArticleDAOTest {
     private ArticleDAO dao;
 
     @Test
+    @Ignore
     public void testInsertArticle() {
+        Article article = new Article(2, "lee", "test", "테스트입니다.");
         dao.insertArticle(null);
     }
 
     @Test
-    @Ignore
+//    @Ignore
     public void testSelectArticleById() {
-        ApplicationContext ctx =
-                new FileSystemXmlApplicationContext(
-                        "file:src/main/webapp/WEB-INF/spring/*.xml"
-                );
-//        ArticleDAO dao = ctx.getBean("articleDAO", ArticleDAO.class);
-        Article article = dao.selectArticleById(null);
+        Article article = dao.selectArticleById("2");
         Assert.assertTrue(article.getAuthor().equals("lee"));
     }
 }

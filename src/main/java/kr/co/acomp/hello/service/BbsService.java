@@ -1,6 +1,7 @@
 package kr.co.acomp.hello.service;
 
 import kr.co.acomp.hello.dao.ArticleDAO;
+import kr.co.acomp.hello.exception.BizException;
 import kr.co.acomp.hello.vo.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,10 @@ public class BbsService {
         return this.articleDAO.selectArticleById(articleId);
 
     }
+    public void testService() {
+        System.out.println("target invoked..");
+        throw new BizException("testService fail..");
+    }
+
 }
 
